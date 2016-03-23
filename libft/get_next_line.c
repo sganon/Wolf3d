@@ -6,11 +6,11 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 12:13:35 by sganon            #+#    #+#             */
-/*   Updated: 2016/01/19 15:51:38 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/21 17:15:40 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static char		*read_til_n(int const fd, char *ret)
 {

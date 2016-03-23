@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:50:38 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/20 17:06:17 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/22 13:37:56 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int		get_max_x(char **tab, t_env *env)
 		max_x = max_x < x ? x : max_x;
 		i++;
 	}
-	env->x = max_x;
+	env->map_x = max_x;
 	return (0);
 }
 
@@ -59,16 +59,16 @@ static int		get_map(char **tab, t_env *env)
 	int		j;
 
 	get_max_x(env->tab, env);
-	map = (int **)malloc(sizeof(int *) * env->y);
+	map = (int **)malloc(sizeof(int *) * env->map_y);
 	i = -1;
 	while (tab[++i])
 	{
 		j = -1;
-		map[i] = (int *)malloc(sizeof(int) * env->x);
+		map[i] = (int *)malloc(sizeof(int) * env->map_x);
 		tmp = ft_strsplit(tab[i], ' ');
 		while (tmp[++j])
 			map[i][j] = ft_atoi(tmp[j]);
-		while (j < env->x)
+		while (j < env->map_x)
 		{
 			map[i][j] = 0;
 			j++;
@@ -90,7 +90,7 @@ void			read_that_file(char *filename, t_env *env)
 	if ((fd = open(filename, O_RDONLY)) == -1)
 		return ;
 	tmp = ft_strnew(0);
-	env->y = 0;
+	env->map_y = 0;
 	while (42)
 	{
 		ret = get_next_line(fd, &str);
@@ -98,7 +98,7 @@ void			read_that_file(char *filename, t_env *env)
 			break ;
 		tmp = ft_strjoin(tmp, str);
 		tmp = ft_strjoin(tmp, nl);
-		env->y++;
+		env->map_y++;
 	}
 	if (ret == -1)
 		return ;

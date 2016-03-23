@@ -6,7 +6,7 @@
 #    By: sganon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:32:31 by sganon            #+#    #+#              #
-#    Updated: 2016/03/20 17:40:40 by sganon           ###   ########.fr        #
+#    Updated: 2016/03/22 13:57:41 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME =	wolf3d
 
 SRC =	main.c \
 		parsing.c \
-		get_next_line.c \
 		key_events.c \
+		init.c \
 
 SRC_LIST =	$(addprefix srcs/, $(SRC))
 

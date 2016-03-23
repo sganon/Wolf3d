@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ray_cast.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 12:13:21 by sganon            #+#    #+#             */
-/*   Updated: 2016/01/06 18:03:04 by sganon           ###   ########.fr       */
+/*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
+/*   Updated: 2016/03/23 14:57:31 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "libft.h"
-# include <fcntl.h>
-# define BUFF_SIZE 16
+#include "wolf.h"
 
-int		get_next_line(int const fd, char **line);
-#endif
+double		get_disth(t_env *e, int x)
+{
+	
+}
+
+void		cast(t_env *e)
+{
+	int		x;
+	double	disth;
+	double	distv;
+
+	x = -1;
+	while (++x < WIN_X)
+	{
+		disth = get_disth(e);
+		distv = get_distv(e);
+	}
+}
