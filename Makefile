@@ -6,7 +6,7 @@
 #    By: sganon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:32:31 by sganon            #+#    #+#              #
-#    Updated: 2016/03/22 13:57:41 by sganon           ###   ########.fr        #
+#    Updated: 2016/03/23 21:38:19 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC =	main.c \
 		parsing.c \
 		key_events.c \
 		init.c \
+		ray_cast.c \
 
 SRC_LIST =	$(addprefix srcs/, $(SRC))
 
@@ -23,7 +24,7 @@ O_FILES = $(SRC:.c=.o)
 
 CC = gcc
 
-CC_FLAGS = -Wall -Werror -Wextra -O3
+CC_FLAGS = -Wall -Werror -Wextra -Ofast
 
 LIBFT_FLAG = -L./libft -lft
 
