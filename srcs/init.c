@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 13:40:20 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/24 00:37:48 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/24 03:41:17 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ int		init_env(t_env *e)
 	e->win = mlx_new_window(e->mlx, WIN_X, WIN_Y, "Wolf3D");
 	e->h_wall = 64;
 	e->h_cam = e->h_wall / 2;
-	e->pos_cam.x = 17.0 * 64;
-	e->pos_cam.y = 3.0 * 64 ;
+	e->pos_cam.x = 14.5 * 64;
+	e->pos_cam.y = 14.5 * 64;
 	e->fov = 60.0;
 	e->a_cam = 45;
 	e->a_start = e->a_cam + (e->fov / 2);
 	e->a_end = e->a_cam - (e->fov / 2);
-	e->inter_ray = e->fov / WIN_X;;
+	e->inter_ray = e->fov / WIN_X;
 	init_trigo(e);
 	e->screen_dist = (WIN_X / 2 ) / e->tan[(int)3000];
 	return (1);

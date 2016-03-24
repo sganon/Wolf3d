@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/24 00:29:54 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/24 03:23:18 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,7 @@ int					key_events(int key, t_env *e);
 int					init_env(t_env *e);
 void				cast(t_env *e);
 int					create_image(t_env *e);
+double				get_sin(double a);
+double				get_tan(double a);
+double				get_cos(double a);
 #endif
