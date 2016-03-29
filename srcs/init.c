@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 13:40:20 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/24 03:41:17 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/29 13:42:08 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		init_env(t_env *e)
 	e->pos_cam.x = 14.5 * 64;
 	e->pos_cam.y = 14.5 * 64;
 	e->fov = 60.0;
-	e->a_cam = 45;
+	e->a_cam = 4500;
 	e->a_start = e->a_cam + (e->fov / 2);
 	e->a_end = e->a_cam - (e->fov / 2);
 	e->inter_ray = e->fov / WIN_X;

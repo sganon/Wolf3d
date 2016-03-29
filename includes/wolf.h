@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/24 03:23:18 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/29 16:11:16 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 # define WIN_Y		1080.0
 
 # define ESC		53
+
+# define RED		0xFF0000
+# define YELLOW		0xF6FF00
+# define BLUE		0x0000FF
+# define GREEN		0x00FF00
 
 # define ABS(x)		((x) < 0 ? -(x) : (x))
 # define SP(x)		((x) * (x))
