@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/29 16:53:09 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/30 16:37:10 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # define WIN_Y		1080.0
 
 # define ESC		53
+# define UP			126
+# define DOWN		125
+# define LEFT		123
+# define RIGHT		124
 
 # define RED		0xFF0000
 # define YELLOW		0xF6FF00
@@ -83,6 +87,7 @@ typedef struct		s_env
 void				read_that_file(char *filename, t_env *env);
 int					key_events(int key, t_env *e);
 int					init_env(t_env *e);
+int					expose_hook(t_env *e);
 void				cast(t_env *e);
 int					create_image(t_env *e);
 double				get_sin(double a);

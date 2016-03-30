@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/30 13:54:04 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/30 19:04:36 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double		get_dist_x(t_env *e, int ray)
 	fx.x = e->pos_cam.x + (e->pos_cam.y - fx.y) / (double)e->tan[(int)a];
 	x_a = -y_a / e->tan[(int)a];
 	while (fx.x < e->map_x && fx.y < e->map_y && fx.y >= 0 && fx.x >= 0 
-			&& e->map[(int)fx.y][(int)fx.x] == 0) 
+			&& e->map[(int)fx.y][(int)fx.x] != 1) 
 	{
 		fx.x = (fx.x + x_a);
 		fx.y = (fx.y + y_a);
@@ -53,7 +53,7 @@ double		get_dist_y(t_env *e, int ray)
 	fy.y = e->pos_cam.y + (e->pos_cam.x - fy.x) * (double)e->tan[(int)a];
 	y_a = -x_a * e->tan[(int)a];
 	while (fy.x < e->map_x && fy.y < e->map_y && fy.y >= 0 && fy.x >= 0 
-			&& e->map[(int)fy.y][(int)fy.x] == 0) 
+			&& e->map[(int)fy.y][(int)fy.x] != 1) 
 	{
 		fy.x = (fy.x + x_a);
 	   	fy.y = (fy.y + y_a);
@@ -82,20 +82,23 @@ void		draw_wall(t_env *e, double dist, int ray, int color)
 	double	i;
 	double	beta;
 
-	beta = ray < WIN_X / 2 ? 0.0 - (WIN_X * 6000.0 * ((double)ray - WIN_X / 2.0)) 
-		: 36000.0 - (WIN_X * 6000.0 * ((double)ray - WIN_X / 2.0));
+	beta = ray < WIN_X / 2 ? 0.0 - ((6000.0 / WIN_X) * ((double)ray - (WIN_X / 2.0))) 
+		: 36000.0 - ((6000.0 / WIN_X) * ((double)ray - (WIN_X / 2.0)));
+	if (color == YELLOW)
+		printf("yellow dist: %f;\n", dist);
+	if (color == BLUE)
+		printf("blue dist: %f;\n", dist);
 	if (beta < 36000 && beta >= 0)
 		dist = dist * e->cos[(int)beta];
 	dist = 1.0 / dist * e->screen_dist;
-	printf("dist = %f\n", dist);
 	i = WIN_Y / 2.0 - dist / 2.0;
 	y = i < 0 ? -i : 0;
 	while (y + i < WIN_Y - i)
 	{
 		draw_in_img(e, y + i, ray, color);
 		y++;
-		if (y + i > WIN_Y - y)
-			return;
+		if (y + i > WIN_Y)
+			return ;
 	}
 }
 
