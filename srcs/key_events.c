@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:37:50 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/30 16:33:09 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/31 16:42:36 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,40 @@ void	handle_x_y_pos(int key, t_env *e)
 {
 	if (key == UP 
 			&& e->map[(int)(e->pos_cam.y + 0.2)][(int)(e->pos_cam.x + 0.2)] == 0)
-		e->pos_cam.y -= 1.0;
+	{
+		if (e->a_cam <= 4500 && e->a_cam > 31500)
+			e->pos_cam.x += 1;
+		else if (e->a_cam > 4500 && e->a_cam <= 13500)
+			e->pos_cam.y -= 1;
+		else if (e->a_cam > 13500 && e->a_cam <= 25500)
+			e->pos_cam.x -= 1;
+		else
+			e->pos_cam.y += 1;
+	}
 	else if (key == DOWN && e->map[(int)(e->pos_cam.y - 0.2)][(int)(e->pos_cam.x - 0.2)] == 0)
-		e->pos_cam.y += 1.0;
-	printf("cam_x : %f;\n", e->pos_cam.x);
-	printf("cam_y : %f;\n", e->pos_cam.y);
+	{
+		if (e->a_cam <= 4500 && e->a_cam > 31500)
+			e->pos_cam.x -= 1;
+		else if (e->a_cam > 4500 && e->a_cam <= 13500)
+			e->pos_cam.y += 1;
+		else if (e->a_cam > 13500 && e->a_cam <= 25500)
+			e->pos_cam.x += 1;
+		else
+			e->pos_cam.y -= 1;
+	}
 	expose_hook(e);
 }
 
-void	handle_angle(int key, t_env *e)
+int		handle_angle(int key, t_env *e)
 {
 	if (key == LEFT)
-		e->a_cam -= 100;
+		e->a_cam += 150;
 	if (key == RIGHT)
-		e->a_cam += 100;
+		e->a_cam -= 150;
+	e->a_cam = e->a_cam >= 36000 ? e->a_cam - 36000 : e->a_cam;
+	e->a_cam = e->a_cam < 0 ? e->a_cam + 36000 : e->a_cam;
 	expose_hook(e);
+	return (1);
 }
 
 int		key_events(int key, t_env *e)

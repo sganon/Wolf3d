@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/30 19:04:36 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/31 16:04:32 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,6 @@ void		draw_wall(t_env *e, double dist, int ray, int color)
 
 	beta = ray < WIN_X / 2 ? 0.0 - ((6000.0 / WIN_X) * ((double)ray - (WIN_X / 2.0))) 
 		: 36000.0 - ((6000.0 / WIN_X) * ((double)ray - (WIN_X / 2.0)));
-	if (color == YELLOW)
-		printf("yellow dist: %f;\n", dist);
-	if (color == BLUE)
-		printf("blue dist: %f;\n", dist);
 	if (beta < 36000 && beta >= 0)
 		dist = dist * e->cos[(int)beta];
 	dist = 1.0 / dist * e->screen_dist;

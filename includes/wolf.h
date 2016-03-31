@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/30 16:37:10 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/31 16:04:17 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int					init_env(t_env *e);
 int					expose_hook(t_env *e);
 void				cast(t_env *e);
 int					create_image(t_env *e);
+int					handle_angle(int key, t_env *e);
 double				get_sin(double a);
 double				get_tan(double a);
 double				get_cos(double a);

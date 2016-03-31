@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/30 17:23:19 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/31 14:46:06 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	floor_cast(t_env *e)
 		while(x < WIN_X)
 		{
 			p = x * 4 + y * e->sl;
-			if (e->img[p] == 0 && p < WIN_X * 4 + WIN_Y * e->sl)
+			if (e->img[p] == 0 && e->img[p + 1] == 0 && e->img[p + 2] == 0 && p < WIN_X * 4 + WIN_Y * e->sl)
 			{
 				e->img[p] = u.rgb.b;
 				e->img[p + 1] = u.rgb.g;
@@ -101,6 +101,7 @@ int		main(int argc, char **argv)
 		return (0);
 	print_map(e);
 	mlx_key_hook(e->win, key_events, e);
+	mlx_hook(e->win, 2, (1L << 0), key_events, e);
 	mlx_expose_hook(e->win, expose_hook, e);
 	mlx_loop(e->mlx);
 	return (0);
