@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:37:50 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/31 16:42:36 by sganon           ###   ########.fr       */
+/*   Updated: 2016/03/31 17:45:00 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
 
 void	handle_x_y_pos(int key, t_env *e)
 {
-	if (key == UP 
-			&& e->map[(int)(e->pos_cam.y + 0.2)][(int)(e->pos_cam.x + 0.2)] == 0)
+	if (key == UP)
 	{
-		if (e->a_cam <= 4500 && e->a_cam > 31500)
+		if (e->a_cam <= 4500 || e->a_cam > 31500)
 			e->pos_cam.x += 1;
 		else if (e->a_cam > 4500 && e->a_cam <= 13500)
 			e->pos_cam.y -= 1;
@@ -29,9 +28,9 @@ void	handle_x_y_pos(int key, t_env *e)
 		else
 			e->pos_cam.y += 1;
 	}
-	else if (key == DOWN && e->map[(int)(e->pos_cam.y - 0.2)][(int)(e->pos_cam.x - 0.2)] == 0)
+	else if (key == DOWN)
 	{
-		if (e->a_cam <= 4500 && e->a_cam > 31500)
+		if (e->a_cam <= 4500 || e->a_cam > 31500)
 			e->pos_cam.x -= 1;
 		else if (e->a_cam > 4500 && e->a_cam <= 13500)
 			e->pos_cam.y += 1;
