@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/31 16:04:17 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/01 17:33:05 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct		s_point
 	double			x;
 	double			y;
 }					t_point;
+
+
 
 typedef struct		s_env
 {
