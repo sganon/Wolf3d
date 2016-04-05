@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/05 16:06:15 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/05 18:24:38 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 # define RIGHT		124
 
 # define RED		0xFF0000
-# define YELLOW		0xF6FF00
+# define YELLOW		0xFFFF00
 # define BLUE		0x0000FF
 # define GREEN		0x00FF00
 
-# define WALL		"textures/wall.xpm"
+# define WALL		"textures/wall1.xpm"
 
 # define ABS(x)		((x) < 0 ? -(x) : (x))
 # define SP(x)		((x) * (x))
