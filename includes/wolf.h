@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/01 17:33:05 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/05 16:06:15 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define YELLOW		0xF6FF00
 # define BLUE		0x0000FF
 # define GREEN		0x00FF00
+
+# define WALL		"textures/wall.xpm"
 
 # define ABS(x)		((x) < 0 ? -(x) : (x))
 # define SP(x)		((x) * (x))
@@ -56,7 +58,16 @@ typedef struct		s_point
 	double			y;
 }					t_point;
 
-
+typedef struct		s_textures
+{
+	void			*img_ptr;
+	char			*img;
+	int				bpp;
+	int				sl;
+	int				end;
+	int				x;
+	int				y;
+}					t_textures;
 
 typedef struct		s_env
 {
@@ -71,19 +82,18 @@ typedef struct		s_env
 	int				map_x;
 	char			**tab;
 	int				**map;
-	int				h_wall;
-	int				h_cam;
-	double			inter_ray;
 	double			a_cam;
-	double			a_start;
-	double			a_end;
 	double			fov;
 	double			screen_dist;
 	double			*cos;
 	double			*sin;
 	double			*tan;
 	double			alpha;
+	double			offset_x;
+	double			offset_y;
+	t_textures		wall;
 	t_point			pos_cam;
+	t_point			hit;
 }					t_env;
 
 void				read_that_file(char *filename, t_env *env);

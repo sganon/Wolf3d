@@ -6,11 +6,13 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/01 14:45:13 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/05 16:19:50 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
+//
+//
 #include <stdio.h>
 
 double		get_dist_x(t_env *e, int ray)
@@ -34,6 +36,7 @@ double		get_dist_x(t_env *e, int ray)
 		fx.x = (fx.x + x_a);
 		fx.y = (fx.y + y_a);
 	}
+	e->hit.x = fx.x;
 	return (sqrt(SP(e->pos_cam.x - fx.x) + SP(e->pos_cam.y - fx.y)));
 }
 
@@ -58,6 +61,7 @@ double		get_dist_y(t_env *e, int ray)
 		fy.x = (fy.x + x_a);
 	   	fy.y = (fy.y + y_a);
 	}
+	e->hit.y = fy.y;
 	return (sqrt(SP(e->pos_cam.x - fy.x) + SP(e->pos_cam.y - fy.y)));
 }
 
@@ -70,10 +74,29 @@ void		draw_in_img(t_env *e, int y, int ray, int color)
 	p = ray * 4 + y * e->sl;
 	if (p < (WIN_X * 4 + WIN_Y * e->sl) && p >= 0)
 	{
-		e->img[p] = u.rgb.b;
+		e->img[p] = u.rgb.r;
 		e->img[p + 1] = u.rgb.g;
-		e->img[p + 2] = u.rgb.r;
+		e->img[p + 2] = u.rgb.b;
 	}
+}
+
+int			get_wall_color(t_env *e, double h, int y, int color)
+{
+	t_color	old;
+	t_color new;
+	int		p;
+	int		g;
+
+	if (h < 20)
+		return (0);
+	g = WIN_Y / h / 2 > 1 ? WIN_Y / h / 2 : 1;
+	old.color = color;
+	e->offset_y = y * e->wall.y / h;
+	p = e->offset_y * e->wall.sl + e->offset_x * e->wall.bpp / 8;
+	new.rgb.b = ((old.rgb.r + (t_bytes)(e->wall.img[p]) * 9) / 10) / g;
+	new.rgb.g = ((old.rgb.g + (t_bytes)(e->wall.img[p + 1]) * 9) / 10) / g;
+	new.rgb.r = ((old.rgb.b + (t_bytes)(e->wall.img[p + 2]) * 9) / 10) / g;
+	return (new.color);
 }
 
 void		draw_wall(t_env *e, double dist, int ray, int color)
@@ -91,10 +114,27 @@ void		draw_wall(t_env *e, double dist, int ray, int color)
 	y = i < 0 ? -i : 0;
 	while (y + i < WIN_Y - i)
 	{
-		draw_in_img(e, y + i, ray, color);
+		draw_in_img(e, y + i, ray, get_wall_color(e, dist, y, color));
 		y++;
 		if (y + i > WIN_Y)
 			return ;
+	}
+}
+
+void		get_offset(t_env *e, double dist_x, double dist_y)
+{
+
+	if (dist_y >= dist_x)
+	{
+		while (e->hit.x > 1)
+			e->hit.x--;
+		e->offset_x = e->hit.x * e->wall.x;
+	}
+	else
+	{
+		while (e->hit.y > 1)
+			e->hit.y--;
+		e->offset_x = e->hit.y * e->wall.x;
 	}
 }
 
@@ -114,6 +154,7 @@ void		cast(t_env *e)
 		a = e->alpha - (double)ray / (WIN_X / 6000.0);
 		a = a >= 36000.0 ? a - 36000.0 : a;
 		a = a < 0 ? a + 36000.0 : a;
+		get_offset(e, dist_x, dist_y);
 		if (dist_y >= dist_x && a > 18000)
 			draw_wall(e, dist_x, ray, RED);
 		else if (dist_y >= dist_x && a <= 18000)
