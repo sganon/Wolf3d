@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 13:40:20 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/05 14:27:13 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/06 14:46:59 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int			init_textures(t_env *e)
 	wall->img_ptr = mlx_xpm_file_to_image(e->mlx, WALL, &wall->x, &wall->y);
 	if (wall->img_ptr == NULL)
 		return (0);
+	e->bpp = 8;
 	wall->img = mlx_get_data_addr(wall->img_ptr, &wall->bpp, &wall->sl, &wall->end);
 	return (1);
 }

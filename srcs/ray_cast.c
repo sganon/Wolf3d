@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/05 20:22:16 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/06 14:48:10 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ void		draw_in_img(t_env *e, int y, int ray, int color)
 	t_color	u;
 
 	u.color = color;
-	p = ray * 4 + y * e->sl;
+	p = ray * e->bpp / 8 + y * e->sl;
 	if (p < (WIN_X * (e->bpp / 8) + WIN_Y * e->sl) && p >= 0)
 	{
-		e->img[p] = ((t_bytes)e->img[p] + u.rgb.r * 2) / 3;
-		e->img[p + 1] =((t_bytes)e->img[p + 1] + u.rgb.g * 2) / 3;
-		e->img[p + 2] = ((t_bytes)e->img[p + 2] + u.rgb.b * 2) / 3;
+		e->img[p] = ((t_bytes)e->img[p] + u.rgb.r * 2);
+		e->img[p + 1] =((t_bytes)e->img[p + 1] + u.rgb.g * 2);
+		e->img[p + 2] = ((t_bytes)e->img[p + 2] + u.rgb.b * 2);
 	}
 }
 
@@ -92,11 +92,10 @@ int			get_wall_color(t_env *e, double h, int y, int color)
 	g = WIN_Y / h / 2.0 > 1 ? WIN_Y / h / 2.0 : 1;
 	old.color = color;
 	e->offset_y = y * e->wall.y / h;
-	e->offset_y -=1;
-	p = e->offset_y * e->wall.sl + e->offset_x * 4;
-	new.rgb.b = ((old.rgb.b + (t_bytes)(e->wall.img[p]) * 9) / 10) / g;
+	p = e->offset_y * e->wall.sl + e->offset_x * e->wall.bpp / 8;
+	new.rgb.b = ((old.rgb.r + (t_bytes)(e->wall.img[p]) * 9) / 10) / g;
 	new.rgb.g = ((old.rgb.g + (t_bytes)(e->wall.img[p + 1]) * 9) / 10) / g;
-	new.rgb.r = ((old.rgb.r + (t_bytes)(e->wall.img[p + 2]) * 9) / 10) / g;
+	new.rgb.r = ((old.rgb.b + (t_bytes)(e->wall.img[p + 2]) * 9) / 10) / g;
 	return (new.color);
 }
 

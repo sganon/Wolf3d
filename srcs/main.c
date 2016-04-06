@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/05 17:59:59 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/06 14:47:16 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	ft_clean(t_env *e)
 
 int		create_image(t_env *e)
 {
-	//	e->end = 0;
-	//	e->bpp = 8;
-	//	e->sl = WIN_X;
+		e->end = 0;
+		e->bpp = 8;
+		e->sl = WIN_X;
 		e->img_ptr = mlx_new_image(e->mlx, WIN_X, WIN_Y);
 		e->img = mlx_get_data_addr(e->img_ptr, &(e->bpp), &(e->sl), &(e->end));
 		return (1);
