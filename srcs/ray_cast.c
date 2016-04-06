@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/06 14:48:10 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/06 18:08:51 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void		draw_in_img(t_env *e, int y, int ray, int color)
 	p = ray * e->bpp / 8 + y * e->sl;
 	if (p < (WIN_X * (e->bpp / 8) + WIN_Y * e->sl) && p >= 0)
 	{
-		e->img[p] = ((t_bytes)e->img[p] + u.rgb.r * 2);
-		e->img[p + 1] =((t_bytes)e->img[p + 1] + u.rgb.g * 2);
-		e->img[p + 2] = ((t_bytes)e->img[p + 2] + u.rgb.b * 2);
+		e->img[p] = u.rgb.r;
+		e->img[p + 1] = u.rgb.g;
+		e->img[p + 2] = u.rgb.b;
 	}
 }
 
@@ -93,9 +93,9 @@ int			get_wall_color(t_env *e, double h, int y, int color)
 	old.color = color;
 	e->offset_y = y * e->wall.y / h;
 	p = e->offset_y * e->wall.sl + e->offset_x * e->wall.bpp / 8;
-	new.rgb.b = ((old.rgb.r + (t_bytes)(e->wall.img[p]) * 9) / 10) / g;
-	new.rgb.g = ((old.rgb.g + (t_bytes)(e->wall.img[p + 1]) * 9) / 10) / g;
-	new.rgb.r = ((old.rgb.b + (t_bytes)(e->wall.img[p + 2]) * 9) / 10) / g;
+	new.rgb.r = ((t_bytes)(e->wall.img[p]) * 9) / 10 / g;
+	new.rgb.g = ((t_bytes)(e->wall.img[p + 1]) * 9) / 10 / g;
+	new.rgb.b = ((t_bytes)(e->wall.img[p + 2]) * 9) / 10 / g;
 	return (new.color);
 }
 
@@ -134,7 +134,7 @@ void		get_offset_x(t_env *e, double dist_x, double dist_y)
 	{
 		while (e->hit.y > 1)
 			e->hit.y--;
-		e->offset_x = e->hit.y * e->wall.y;
+		e->offset_x = e->hit.y * e->wall.x;
 	}
 }
 

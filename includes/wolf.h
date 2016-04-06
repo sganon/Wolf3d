@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/05 18:24:38 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/06 18:28:24 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define BLUE		0x0000FF
 # define GREEN		0x00FF00
 
-# define WALL		"textures/wall1.xpm"
+# define WALL		"textures/wall5.xpm"
 
 # define ABS(x)		((x) < 0 ? -(x) : (x))
 # define SP(x)		((x) * (x))
@@ -40,9 +40,9 @@ typedef unsigned char	t_bytes;
 
 typedef struct			s_rgb
 {
-	t_bytes				b;
-	t_bytes				g;
 	t_bytes				r;
+	t_bytes				g;
+	t_bytes				b;
 }						t_rgb;
 
 typedef union			u_color
@@ -89,8 +89,8 @@ typedef struct		s_env
 	double			*sin;
 	double			*tan;
 	double			alpha;
-	double			offset_x;
-	double			offset_y;
+	int				offset_x;
+	int				offset_y;
 	t_textures		wall;
 	t_point			pos_cam;
 	t_point			hit;
