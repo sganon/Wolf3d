@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/07 14:04:20 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/07 18:39:27 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void		draw_wall(t_env *e, double dist, int ray, int color)
 	dist = 1.0 / dist * e->screen_dist;
 	i = WIN_Y / 2.0 - dist / 2.0;
 	y = i < 0 ? -i : 0;
+	ceil_cast(e, ray, i, beta);
 	while (y + i < WIN_Y - i)
 	{
 		draw_in_img(e, y + i, ray, get_wall_color(e, dist, y, color));
@@ -127,14 +128,16 @@ void		get_offset_x(t_env *e, double dist_x, double dist_y)
 
 	if (dist_y >= dist_x)
 	{
-		while (e->hit.x > 1)
-			e->hit.x--;
+		e->hit.x = e->hit.x - (int)e->hit.x;
+		//while (e->hit.x > 1)
+		//	e->hit.x--;
 		e->offset_x = e->hit.x * e->wall.x;
 	}
 	else
 	{
-		while (e->hit.y > 1)
-			e->hit.y--;
+		e->hit.y = e->hit.y - (int)e->hit.y;
+		//while (e->hit.y > 1)
+			//e->hit.y--;
 		e->offset_x = e->hit.y * e->wall.x;
 	}
 }
