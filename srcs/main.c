@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/06 17:46:20 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/07 16:47:05 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,41 +51,13 @@ int		create_image(t_env *e)
 		return (1);
 }
 
-void	floor_cast(t_env *e)
-{
-	int		y;
-	int		x;
-	int		p;
-	t_color	u;
-
-	y = WIN_Y / 2;
-	u.color = 0x808080;
-	while (y < WIN_Y)
-	{
-		x = 0;
-		while(x < WIN_X)
-		{
-			p = x * 4 + y * e->sl;
-			if (e->img[p] == 0 && e->img[p + 1] == 0 && e->img[p + 2] == 0 && p < WIN_X * 4 + WIN_Y * e->sl)
-			{
-				e->img[p] = u.rgb.b;
-				e->img[p + 1] = u.rgb.g;
-				e->img[p + 2] = u.rgb.r;
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
 int		expose_hook(t_env *e)
 {
 	if (!e->img_ptr)
 		create_image(e);
 	cast(e);
-	floor_cast(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img_ptr, 0 , 0);
-	mlx_put_image_to_window(e->mlx, e->win, e->wall.img_ptr, 0 , 0);
+	//mlx_put_image_to_window(e->mlx, e->win, e->floor.img_ptr, 0 , 0);
 	ft_clean(e);
 	mlx_do_sync(e->mlx);
 	return (1);

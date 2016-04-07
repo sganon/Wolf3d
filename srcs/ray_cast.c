@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/06 18:08:51 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/07 14:04:20 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void		draw_wall(t_env *e, double dist, int ray, int color)
 		if (y + i > WIN_Y)
 			return ;
 	}
+	floor_cast(e, ray, y + i, beta);
 }
 
 void		get_offset_x(t_env *e, double dist_x, double dist_y)

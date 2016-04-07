@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/06 18:28:24 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/07 16:45:49 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define GREEN		0x00FF00
 
 # define WALL		"textures/wall5.xpm"
+# define FLOOR		"textures/floor2.xpm"
 
 # define ABS(x)		((x) < 0 ? -(x) : (x))
 # define SP(x)		((x) * (x))
@@ -92,6 +93,7 @@ typedef struct		s_env
 	int				offset_x;
 	int				offset_y;
 	t_textures		wall;
+	t_textures		floor;
 	t_point			pos_cam;
 	t_point			hit;
 }					t_env;
@@ -101,6 +103,8 @@ int					key_events(int key, t_env *e);
 int					init_env(t_env *e);
 int					expose_hook(t_env *e);
 void				cast(t_env *e);
+void				floor_cast(t_env *e, int ray, int y, double beta);
+void				draw_in_img(t_env *e, int y, int ray, int color);
 int					create_image(t_env *e);
 int					handle_angle(int key, t_env *e);
 double				get_sin(double a);
