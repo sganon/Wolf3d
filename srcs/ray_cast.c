@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/07 18:39:27 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/08 14:29:16 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ double		get_dist_x(t_env *e, int ray)
 		fx.y = (fx.y + y_a);
 	}
 	e->hit.x = fx.x;
-	return (sqrt(SP(e->pos_cam.x - fx.x) + SP(e->pos_cam.y - fx.y)));
+	return (sqrt(SP((int)e->pos_cam.x - fx.x) + SP((int)e->pos_cam.y - fx.y)));
 }
 
 double		get_dist_y(t_env *e, int ray)
@@ -129,15 +129,11 @@ void		get_offset_x(t_env *e, double dist_x, double dist_y)
 	if (dist_y >= dist_x)
 	{
 		e->hit.x = e->hit.x - (int)e->hit.x;
-		//while (e->hit.x > 1)
-		//	e->hit.x--;
 		e->offset_x = e->hit.x * e->wall.x;
 	}
 	else
 	{
 		e->hit.y = e->hit.y - (int)e->hit.y;
-		//while (e->hit.y > 1)
-			//e->hit.y--;
 		e->offset_x = e->hit.y * e->wall.x;
 	}
 }

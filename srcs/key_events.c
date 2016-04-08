@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:37:50 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/06 18:26:04 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/08 19:52:09 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		handle_angle(int key, t_env *e)
 
 int		key_events(int key, t_env *e)
 {
+	handle_fps_for_gif(e);
 	if (key == ESC)
 		exit(0);
 	else if (key == UP || key == DOWN)

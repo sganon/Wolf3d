@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 13:40:20 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/07 18:30:59 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/08 14:58:07 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ int		init_env(t_env *e)
 	e->pos_cam.y = 18.0;
 	e->fov = 6000.0;
 	e->a_cam = 9000;
+	e->gif = 0;
+	e->fps = 0;
+	e->frame = 0;
+	e->old_clock = clock();
 	if (!init_trigo(e) || !init_textures(e))
 		return (0);
 	return (1);

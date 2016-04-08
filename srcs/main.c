@@ -6,11 +6,14 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/07 16:47:05 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/08 19:52:54 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
+//
+//
+#include <stdio.h>
 
 void	print_map(t_env *e)
 {
@@ -51,6 +54,23 @@ int		create_image(t_env *e)
 		return (1);
 }
 
+void	handle_fps_for_gif(t_env *e)
+{
+	clock_t	new_clock;
+
+	new_clock = clock();
+	e->fps = CLOCKS_PER_SEC / (new_clock - e->old_clock);
+	e->old_clock = new_clock;
+	e->frame++;
+	if (e->frame > e->fps / 15)
+	{
+		e->gif++;
+		e->frame = 0;
+	}
+	if (e->gif > 34)
+		e->gif = 0;
+}
+
 int		expose_hook(t_env *e)
 {
 	if (!e->img_ptr)
@@ -60,6 +80,13 @@ int		expose_hook(t_env *e)
 	//mlx_put_image_to_window(e->mlx, e->win, e->floor.img_ptr, 0 , 0);
 	ft_clean(e);
 	mlx_do_sync(e->mlx);
+	return (1);
+}
+
+int		loop_hook(t_env *e)
+{
+	handle_fps_for_gif(e);
+	expose_hook(e);
 	return (1);
 }
 
@@ -73,9 +100,9 @@ int		main(int argc, char **argv)
 	if (!(init_env(e)))
 		return (0);
 	print_map(e);
-	mlx_key_hook(e->win, key_events, e);
 	mlx_hook(e->win, 2, (1L << 0), key_events, e);
-	mlx_expose_hook(e->win, expose_hook, e);
+	//mlx_expose_hook(e->mlx, expose_hook, e);
+	mlx_loop_hook(e->mlx, loop_hook, e);
 	mlx_loop(e->mlx);
 	return (0);
 }

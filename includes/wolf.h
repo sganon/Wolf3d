@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/07 18:36:08 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/08 19:58:19 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include 			"libft.h"
 # include 			"../mlx/mlx.h"
 # include 			<math.h>
+# include			<time.h>
 
 # define WIN_X		1920.0
 # define WIN_Y		1080.0
@@ -31,9 +32,9 @@
 # define BLUE		0x0000FF
 # define GREEN		0x00FF00
 
-# define WALL		"textures/wall5.xpm"
-# define FLOOR		"textures/floor2.xpm"
-# define CEIL		"textures/ceil.xpm"
+# define WALL		"textures/wall6.xpm"
+# define FLOOR		"textures/floor3.xpm"
+# define CEIL		"textures/ceil4.xpm"
 
 # define ABS(x)		((x) < 0 ? -(x) : (x))
 # define SP(x)		((x) * (x))
@@ -98,6 +99,10 @@ typedef struct		s_env
 	t_textures		ceil;
 	t_point			pos_cam;
 	t_point			hit;
+	clock_t			old_clock;
+	int				gif;
+	int				frame;
+	int				fps;
 }					t_env;
 
 void				read_that_file(char *filename, t_env *env);
@@ -113,4 +118,5 @@ int					handle_angle(int key, t_env *e);
 double				get_sin(double a);
 double				get_tan(double a);
 double				get_cos(double a);
+void				handle_fps_for_gif(t_env *e);
 #endif
