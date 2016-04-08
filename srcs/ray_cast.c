@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/08 14:29:16 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/08 20:28:56 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ double		get_dist_y(t_env *e, int ray)
 	   	fy.y = (fy.y + y_a);
 	}
 	e->hit.y = fy.y;
-	return (sqrt(SP(e->pos_cam.x - fy.x) + SP(e->pos_cam.y - fy.y)));
+	return (sqrt(SP((int)e->pos_cam.x - fy.x) + SP((int)e->pos_cam.y - fy.y)));
 }
 
 void		draw_in_img(t_env *e, int y, int ray, int color)

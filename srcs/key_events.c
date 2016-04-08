@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:37:50 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/08 19:52:09 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/08 20:31:15 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@
 
 void	handle_x_y_pos(int key, t_env *e)
 {
+/*	double	d_x;
+	double	d_y;
+
+	(void)key;
+	d_x = e->cos[(int)e->a_cam] * 0.15;
+	d_y = e->sin[(int)e->a_cam] * 0.15;
+	if (key == UP)
+	{
+		e->pos_cam.x += d_x;
+		e->pos_cam.y -= d_y;
+	}
+	else if (key == DOWN)
+	{
+		e->pos_cam.x -= d_x;
+		e->pos_cam.y += d_y;
+	}*/
 	if (key == UP)
 	{
 		if (e->a_cam <= 4500 || e->a_cam > 31500)
