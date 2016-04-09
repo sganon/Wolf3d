@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/08 19:58:19 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/09 17:10:01 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct		s_env
 	double			*sin;
 	double			*tan;
 	double			alpha;
+	double			speed;
 	int				offset_x;
 	int				offset_y;
 	t_textures		wall;

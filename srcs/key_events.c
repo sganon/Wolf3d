@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:37:50 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/08 20:31:15 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/09 17:15:50 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,43 +17,22 @@
 
 void	handle_x_y_pos(int key, t_env *e)
 {
-/*	double	d_x;
+	double	d_x;
 	double	d_y;
 
-	(void)key;
-	d_x = e->cos[(int)e->a_cam] * 0.15;
-	d_y = e->sin[(int)e->a_cam] * 0.15;
-	if (key == UP)
+	d_x = e->cos[(int)e->a_cam] * e->speed;
+	d_y = e->sin[(int)e->a_cam] * e->speed;
+	if (key == UP 
+			&& e->map[(int)(e->pos_cam.y - d_y)][(int)(e->pos_cam.x + d_x)] == 0)
 	{
 		e->pos_cam.x += d_x;
 		e->pos_cam.y -= d_y;
 	}
-	else if (key == DOWN)
+	else if (key == DOWN 
+			&& e->map[(int)(e->pos_cam.y + d_y)][(int)(e->pos_cam.x - d_x)] == 0)
 	{
 		e->pos_cam.x -= d_x;
 		e->pos_cam.y += d_y;
-	}*/
-	if (key == UP)
-	{
-		if (e->a_cam <= 4500 || e->a_cam > 31500)
-			e->pos_cam.x += 1;
-		else if (e->a_cam > 4500 && e->a_cam <= 13500)
-			e->pos_cam.y -= 1;
-		else if (e->a_cam > 13500 && e->a_cam <= 25500)
-			e->pos_cam.x -= 1;
-		else
-			e->pos_cam.y += 1;
-	}
-	else if (key == DOWN)
-	{
-		if (e->a_cam <= 4500 || e->a_cam > 31500)
-			e->pos_cam.x -= 1;
-		else if (e->a_cam > 4500 && e->a_cam <= 13500)
-			e->pos_cam.y += 1;
-		else if (e->a_cam > 13500 && e->a_cam <= 25500)
-			e->pos_cam.x += 1;
-		else
-			e->pos_cam.y -= 1;
 	}
 	expose_hook(e);
 }
