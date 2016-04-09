@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/08 19:52:54 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/09 18:46:31 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	handle_fps_for_gif(t_env *e)
 	new_clock = clock();
 	e->fps = CLOCKS_PER_SEC / (new_clock - e->old_clock);
 	e->old_clock = new_clock;
+	e->speed = 8.0 / e->fps;
+	e->a_speed = 3000.0 / e->fps;
 	e->frame++;
 	if (e->frame > e->fps / 15)
 	{
@@ -99,8 +101,8 @@ int		main(int argc, char **argv)
 		read_that_file(argv[1], e);
 	if (!(init_env(e)))
 		return (0);
-	print_map(e);
 	mlx_hook(e->win, 2, (1L << 0), key_events, e);
+//	mlx_hook(e->win, 6, (1L << 6), mouse_angle, e);
 	//mlx_expose_hook(e->mlx, expose_hook, e);
 	mlx_loop_hook(e->mlx, loop_hook, e);
 	mlx_loop(e->mlx);

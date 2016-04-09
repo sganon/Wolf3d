@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/09 17:10:01 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/09 18:56:35 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define BLUE		0x0000FF
 # define GREEN		0x00FF00
 
-# define WALL		"textures/wall6.xpm"
+# define WALL		"textures/wall7.xpm"
 # define FLOOR		"textures/floor3.xpm"
 # define CEIL		"textures/ceil4.xpm"
 
@@ -93,6 +93,7 @@ typedef struct		s_env
 	double			*tan;
 	double			alpha;
 	double			speed;
+	double			a_speed;
 	int				offset_x;
 	int				offset_y;
 	t_textures		wall;
@@ -108,6 +109,7 @@ typedef struct		s_env
 
 void				read_that_file(char *filename, t_env *env);
 int					key_events(int key, t_env *e);
+int					mouse_angle(int x, int y, t_env *e);
 int					init_env(t_env *e);
 int					expose_hook(t_env *e);
 void				cast(t_env *e);
