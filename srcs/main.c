@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/09 18:46:31 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/10 19:43:03 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int		expose_hook(t_env *e)
 		create_image(e);
 	cast(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img_ptr, 0 , 0);
+	minimap(e);
+	mlx_put_image_to_window(e->mlx, e->win, e->minimap.img_ptr, WIN_X - (e->map_x * 4), WIN_Y - (e->map_y * 4));
 	//mlx_put_image_to_window(e->mlx, e->win, e->floor.img_ptr, 0 , 0);
 	ft_clean(e);
 	mlx_do_sync(e->mlx);

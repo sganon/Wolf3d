@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 13:40:20 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/09 18:44:23 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/10 19:52:52 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int		init_env(t_env *e)
 		return (0);
 	e->win = mlx_new_window(e->mlx, WIN_X, WIN_Y, "Wolf3D");
 	e->img_ptr = NULL;
-	e->pos_cam.x = 8.0;
-	e->pos_cam.y = 18.0;
+	e->pos_cam.x = e->map_x / 2.0 + 3;
+	e->pos_cam.y = e->map_y - 3.0;
 	e->fov = 6000.0;
 	e->a_cam = 9000;
 	e->gif = 0;
@@ -69,7 +69,7 @@ int		init_env(t_env *e)
 	e->frame = 0;
 	e->old_clock = clock();
 	e->speed = 0.30;
-	e->a_speed = 200;
+	e->a_speed = 400;
 	if (!init_trigo(e) || !init_textures(e))
 		return (0);
 	return (1);

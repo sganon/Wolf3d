@@ -6,7 +6,7 @@
 #    By: sganon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:32:31 by sganon            #+#    #+#              #
-#    Updated: 2016/04/09 18:14:19 by sganon           ###   ########.fr        #
+#    Updated: 2016/04/10 17:40:20 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC =	main.c \
 		trigo.c \
 		floor_cast.c \
 		mouse_events.c \
+		minimap.c \
 
 SRC_LIST =	$(addprefix srcs/, $(SRC))
 

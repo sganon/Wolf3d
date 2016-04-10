@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/09 18:56:35 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/10 19:42:15 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct		s_env
 	t_textures		wall;
 	t_textures		floor;
 	t_textures		ceil;
+	t_textures		minimap;
 	t_point			pos_cam;
 	t_point			hit;
 	clock_t			old_clock;
@@ -116,6 +117,7 @@ void				cast(t_env *e);
 void				floor_cast(t_env *e, int ray, int y, double beta);
 void				ceil_cast(t_env *e, int ray, int y, double beta);
 void				draw_in_img(t_env *e, int y, int ray, int color);
+void				minimap(t_env *e);
 int					create_image(t_env *e);
 int					handle_angle(int key, t_env *e);
 double				get_sin(double a);
