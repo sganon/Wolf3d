@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/10 19:42:15 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/11 14:17:56 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define YELLOW		0xFFFF00
 # define BLUE		0x0000FF
 # define GREEN		0x00FF00
+# define WHITE		0xFFFFFF 
+# define GREY		0x767676
 
 # define WALL		"textures/wall7.xpm"
 # define FLOOR		"textures/floor3.xpm"
