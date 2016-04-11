@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/11 14:29:01 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/11 19:01:45 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	handle_fps_for_gif(t_env *e)
 	e->fps = CLOCKS_PER_SEC / (new_clock - e->old_clock);
 	e->old_clock = new_clock;
 	e->speed = 8.0 / e->fps;
-	e->a_speed = 6000.0 / e->fps;
+	e->a_speed = 3000.0 / e->fps;
+	e->a_speed *= 0.75;
 	e->frame++;
 	if (e->frame > e->fps / 15)
 	{

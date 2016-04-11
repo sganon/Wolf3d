@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/10 17:27:08 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/11 14:18:15 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/11 16:56:36 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	discover_map(t_env *e)
 			else if (start_y >= 0 && start_y < e->map_y && start_x >= 0 
 					&& start_x < e->map_x && e->map[start_y][start_x] == 1)
 			{
-				draw_in_mm(e, start_x * 4, start_y * 4, RED);
+				draw_in_mm(e, start_x * 4, start_y * 4, L_BLUE);
 			}
 			start_x++;
 		}
