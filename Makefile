@@ -6,7 +6,7 @@
 #    By: sganon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:32:31 by sganon            #+#    #+#              #
-#    Updated: 2016/04/10 17:40:20 by sganon           ###   ########.fr        #
+#    Updated: 2016/04/13 13:04:34 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ SRC =	main.c \
 		key_events.c \
 		init.c \
 		ray_cast.c \
-		trigo.c \
 		floor_cast.c \
 		mouse_events.c \
 		minimap.c \
