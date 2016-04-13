@@ -6,12 +6,33 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 13:40:20 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/11 21:03:19 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/13 14:15:06 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
-int			init_trigo(t_env *e)
+
+void	handle_fps_for_gif(t_env *e)
+{
+	clock_t	new_clock;
+
+	new_clock = clock();
+	e->fps = CLOCKS_PER_SEC / (new_clock - e->old_clock);
+	e->old_clock = new_clock;
+	e->speed = 8.0 / (double)e->fps;
+	e->a_speed = 6000.0 / (double)e->fps;
+	e->a_speed *= 0.75;
+	e->frame++;
+	if (e->frame > e->fps / 15)
+	{
+		e->gif++;
+		e->frame = 0;
+	}
+	if (e->gif > 34)
+		e->gif = 0;
+}
+
+int		init_trigo(t_env *e)
 {
 	int			i;
 	double		rad;
@@ -30,11 +51,11 @@ int			init_trigo(t_env *e)
 		(e->tan)[i] = tan(rad);
 		i++;
 	}
-	e->screen_dist = (WIN_X / 2 ) / e->tan[(int)3000];
+	e->screen_dist = (WIN_X / 2) / e->tan[(int)3000];
 	return (1);
 }
 
-int			init_textures(t_env *e)
+int		init_textures(t_env *e)
 {
 	t_textures	*wall;
 	t_textures	*floor;
@@ -48,9 +69,9 @@ int			init_textures(t_env *e)
 	ceil->img_ptr = mlx_xpm_file_to_image(e->mlx, CEIL, &ceil->x, &ceil->y);
 	if (!wall->img_ptr || !floor->img_ptr || !ceil->img_ptr)
 		return (0);
-	wall->img = mlx_get_data_addr(wall->img_ptr, &wall->bpp, &wall->sl, &wall->end);
-	floor->img = mlx_get_data_addr(floor->img_ptr, &floor->bpp, &floor->sl, &floor->end);
-	ceil->img = mlx_get_data_addr(ceil->img_ptr, &ceil->bpp, &ceil->sl, &ceil->end);
+	wall->img = MLX_DAT(wall->img_ptr, &wall->bpp, &wall->sl, &wall->end);
+	floor->img = MLX_DAT(floor->img_ptr, &floor->bpp, &floor->sl, &floor->end);
+	ceil->img = MLX_DAT(ceil->img_ptr, &ceil->bpp, &ceil->sl, &ceil->end);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/13 13:04:51 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/13 13:48:08 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # define WIN_X		1920.0
 # define WIN_Y		1080.0
+# define WIN_X2		(WIN_X / 2.0)
+# define WIN_Y2		(WIN_Y / 2.0)
 
 # define ESC		53
 # define UP			126
@@ -41,6 +43,7 @@
 
 # define ABS(x)		((x) < 0 ? -(x) : (x))
 # define SP(x)		((x) * (x))
+# define MLX_DAT(w, x, y, z)	mlx_get_data_addr(w, x, y, z)
 
 typedef unsigned char	t_bytes;
 
@@ -124,4 +127,6 @@ void				minimap(t_env *e);
 int					create_image(t_env *e);
 int					handle_angle(int key, t_env *e);
 void				handle_fps_for_gif(t_env *e);
+void				get_offset_x(t_env *e, double dist_x, double dist_y);
+int					get_wall_color(t_env *e, double h, int y);
 #endif

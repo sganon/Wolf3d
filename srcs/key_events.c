@@ -6,14 +6,11 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 17:37:50 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/09 20:13:00 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/13 13:31:56 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
-
-//
-#include <stdio.h>
 
 void	handle_x_y_pos(int key, t_env *e)
 {
@@ -22,14 +19,14 @@ void	handle_x_y_pos(int key, t_env *e)
 
 	d_x = e->cos[(int)e->a_cam] * e->speed;
 	d_y = e->sin[(int)e->a_cam] * e->speed;
-	if (key == UP 
-			&& e->map[(int)(e->pos_cam.y - d_y)][(int)(e->pos_cam.x + d_x)] == 0)
+	if (key == UP
+			&& !e->map[(int)(e->pos_cam.y - d_y)][(int)(e->pos_cam.x + d_x)])
 	{
 		e->pos_cam.x += d_x;
 		e->pos_cam.y -= d_y;
 	}
-	else if (key == DOWN 
-			&& e->map[(int)(e->pos_cam.y + d_y)][(int)(e->pos_cam.x - d_x)] == 0)
+	else if (key == DOWN
+			&& !e->map[(int)(e->pos_cam.y + d_y)][(int)(e->pos_cam.x - d_x)])
 	{
 		e->pos_cam.x -= d_x;
 		e->pos_cam.y += d_y;
@@ -41,7 +38,7 @@ void	handle_x_y_pos(int key, t_env *e)
 int		handle_angle(int key, t_env *e)
 {
 	if (key == LEFT)
-		e->a_cam += e->a_speed;;
+		e->a_cam += e->a_speed;
 	if (key == RIGHT)
 		e->a_cam -= e->a_speed;
 	e->a_cam = e->a_cam >= 36000 ? e->a_cam - 36000 : e->a_cam;
