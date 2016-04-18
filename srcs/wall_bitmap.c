@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 15:11:15 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/18 15:15:48 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/18 15:24:15 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int			get_wall_color(t_env *e, double h, int y)
 	g = WIN_Y / h / 2.0 > 1 ? WIN_Y / h / 2.0 : 1;
 	e->offset_y = y * e->wall.y / h;
 	p = e->offset_y * e->wall.sl + e->offset_x * e->wall.bpp / 8;
-	new.rgb.r = (t_bytes)(e->wall.img[p] / g);
-	new.rgb.g = (t_bytes)(e->wall.img[p + 1] / g);
-	new.rgb.b = (t_bytes)(e->wall.img[p + 2] / g);
+	new.rgb.r = (t_bytes)(e->wall.img[p]) / g;
+	new.rgb.g = (t_bytes)(e->wall.img[p + 1]) / g;
+	new.rgb.b = (t_bytes)(e->wall.img[p + 2]) / g;
 	return (new.color);
 }
 

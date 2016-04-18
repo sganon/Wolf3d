@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:50:38 by sganon            #+#    #+#             */
-/*   Updated: 2016/03/22 13:37:56 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/18 15:34:41 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int		get_map(char **tab, t_env *env)
 	return (0);
 }
 
-void			read_that_file(char *filename, t_env *env)
+int				read_that_file(char *filename, t_env *env)
 {
 	int		fd;
 	char	*str;
@@ -88,7 +88,7 @@ void			read_that_file(char *filename, t_env *env)
 
 	nl = ft_strdup("\n");
 	if ((fd = open(filename, O_RDONLY)) == -1)
-		return ;
+		return (0);
 	tmp = ft_strnew(0);
 	env->map_y = 0;
 	while (42)
@@ -101,8 +101,8 @@ void			read_that_file(char *filename, t_env *env)
 		env->map_y++;
 	}
 	if (ret == -1)
-		return ;
-	else
-		env->tab = ft_strsplit(tmp, '\n');
+		return (0);
+	env->tab = ft_strsplit(tmp, '\n');
 	get_map(env->tab, env);
+	return (1);
 }

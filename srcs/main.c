@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/18 13:21:48 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/18 15:21:43 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,14 @@ int		main(int argc, char **argv)
 
 	e = (t_env *)malloc(sizeof(t_env));
 	if (argc == 2)
-		read_that_file(argv[1], e);
-	if (!(init_env(e)))
-		return (0);
-	mlx_hook(e->win, 2, (1L << 0), key_events, e);
-	mlx_loop_hook(e->mlx, loop_hook, e);
-	mlx_loop(e->mlx);
+	{
+		if (!read_that_file(argv[1], e))
+			return (0);
+		if (!(init_env(e)))
+			return (0);
+		mlx_hook(e->win, 2, (1L << 0), key_events, e);
+		mlx_loop_hook(e->mlx, loop_hook, e);
+		mlx_loop(e->mlx);
+	}
 	return (0);
 }

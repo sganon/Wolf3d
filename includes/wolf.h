@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/18 15:03:47 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/18 15:21:21 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ typedef struct					s_env
 	int							fps;
 }								t_env;
 
-void							read_that_file(char *filename, t_env *env);
+int								read_that_file(char *filename, t_env *env);
 int								key_events(int key, t_env *e);
 int								init_env(t_env *e);
 int								expose_hook(t_env *e);
