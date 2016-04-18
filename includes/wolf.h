@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/18 13:32:23 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/18 15:03:47 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,4 +131,5 @@ void							handle_fps_for_gif(t_env *e);
 void							get_offset_x(t_env *e, double dist_x,
 								double dist_y);
 int								get_wall_color(t_env *e, double h, int y);
+
 #endif
