@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 13:40:20 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/13 14:15:06 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/13 19:28:08 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	handle_fps_for_gif(t_env *e)
 	e->fps = CLOCKS_PER_SEC / (new_clock - e->old_clock);
 	e->old_clock = new_clock;
 	e->speed = 8.0 / (double)e->fps;
-	e->a_speed = 6000.0 / (double)e->fps;
-	e->a_speed *= 0.75;
+	e->a_speed = 9000.0 / (double)e->fps;
+	e->speed *= 0.75;
 	e->frame++;
-	if (e->frame > e->fps / 15)
+	if (e->frame > e->fps / 20)
 	{
 		e->gif++;
 		e->frame = 0;
@@ -90,7 +90,7 @@ int		init_env(t_env *e)
 	e->frame = 0;
 	e->old_clock = clock();
 	e->speed = 0.30;
-	e->a_speed = 50;
+	e->a_speed = 600;
 	if (!init_trigo(e) || !init_textures(e))
 		return (0);
 	return (1);

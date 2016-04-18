@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 13:06:38 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/13 13:21:29 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/13 19:14:02 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int		get_floor_color(t_env *e, t_point pix, int y)
 	double	g;
 
 	g = ABS(y - WIN_Y / 2.0) / (WIN_Y / 2.0);
-	pix.x *= e->floor.y;
+	pix.x *= e->floor.x;
 	pix.y *= e->floor.y;
-	pix.x = pix.x >= 0 ? pix.x : pix.x + e->floor.y;
+	pix.x = pix.x >= 0 ? pix.x : pix.x + e->floor.x;
 	pix.y = pix.y >= 0 ? pix.y : pix.y + e->floor.y;
 	p = (int)pix.x * e->floor.bpp / 8 + (int)pix.y * e->floor.sl;
 	if (p >= 0)
@@ -44,7 +44,7 @@ void	floor_cast(t_env *e, int ray, int y, double b)
 
 	a = e->alpha - (double)ray / (WIN_X / 6000.0);
 	a = a >= 36000.0 ? a - 36000.0 : a;
-	a = a < 0 ? a + 36000.0 : a;
+	a = a <= 0 ? a + 36000.0 : a;
 	while (++y < WIN_Y)
 	{
 		wrng_d = (WIN_X2 / (y - WIN_Y2)) * (e->screen_dist / WIN_Y);
@@ -67,7 +67,7 @@ int		get_ceil_color(t_env *e, t_point pix, int y)
 	pix.x *= e->ceil.x;
 	pix.y *= e->ceil.x;
 	pix.x = pix.x >= 0 ? pix.x : pix.x + e->ceil.x;
-	pix.y = pix.y >= 0 ? pix.y : pix.y + e->ceil.x;
+	pix.y = pix.y >= 0 ? pix.y : pix.y + e->ceil.y;
 	p = (int)pix.x * 4 + ((int)pix.y + e->gif * e->ceil.x) * e->ceil.sl;
 	col.rgb.r = (t_bytes)e->ceil.img[p] * g;
 	col.rgb.g = (t_bytes)e->ceil.img[p + 1] * g;

@@ -6,20 +6,11 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/13 14:18:05 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/18 13:21:48 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
-
-void	ft_clean(t_env *e)
-{
-	int		p;
-
-	p = -1;
-	while (++p < WIN_X * 4 + WIN_Y * e->sl)
-		e->img[p] = 0;
-}
 
 int		create_image(t_env *e)
 {
@@ -41,7 +32,6 @@ int		expose_hook(t_env *e)
 	mlx_put_image_to_window(e->mlx, e->win, e->img_ptr, 0, 0);
 	minimap(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->minimap.img_ptr, mmx, mmy);
-	ft_clean(e);
 	mlx_do_sync(e->mlx);
 	return (1);
 }

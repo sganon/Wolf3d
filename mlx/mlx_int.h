@@ -98,4 +98,5 @@ int     mlx_int_str_str_cote(char *str,char *find,int len);
 int	mlx_destroy_image(mlx_ptr_t *mlx_ptr, mlx_img_list_t *img_ptr);
 void	*mlx_new_image();
 void    *mlx_xpm_to_image(mlx_ptr_t *xvar,char **xpm_data,int *width,int *height);
+int     mlx_mouse_move(mlx_win_list_t *win, int x, int y);
 int	mlx_do_sync(mlx_ptr_t *mlx_ptr);

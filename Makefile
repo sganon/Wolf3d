@@ -6,7 +6,7 @@
 #    By: sganon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:32:31 by sganon            #+#    #+#              #
-#    Updated: 2016/04/13 14:08:05 by sganon           ###   ########.fr        #
+#    Updated: 2016/04/18 13:39:59 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRC_LIST =	$(addprefix srcs/, $(SRC))
 
 O_FILES = $(SRC:.c=.o)
 
+O_LIST = $(addprefix objs/, $(O_FILES))
+
 CC = gcc
 
 CC_FLAGS = -Wall -Werror -Wextra -Ofast
@@ -41,15 +43,16 @@ $(NAME):
 		@make -C libft/ fclean
 		@make -C mlx/ clean
 		@make -C libft/
-		@make -C mlx/
-		@echo "Libft compiled."
+		@make -C mlx/ libmlx.a
+		@echo "Libft and mlx compiled."
 		@$(CC) $(CC_FLAGS) -c $(SRC_LIST) $(INC_FLAG)
 		@echo "Objects compiled."
-		@$(CC) $(CC_FLAGS) -o $(NAME) $(O_FILES) $(LIBFT_FLAG) $(MLX_FLAG) -lm $(INC_FLAG)
+		@mv $(O_FILES) ./objs/
+		@$(CC) $(CC_FLAGS) -o $(NAME) $(O_LIST) $(LIBFT_FLAG) $(MLX_FLAG) -lm $(INC_FLAG)
 		@echo "Wolf3d compiled."
 
 clean:
-		@rm -f $(O_FILES)
+		@rm -f $(O_LIST)
 		@make -C libft/ fclean
 		@make -C mlx/ clean
 		@echo "Objects and libraries cleaned."
@@ -59,3 +62,5 @@ fclean : clean
 		@echo "Wolf3d cleaned."
 
 re : fclean all
+
+.PHONY : all clean fclean re
