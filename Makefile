@@ -6,7 +6,7 @@
 #    By: sganon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:32:31 by sganon            #+#    #+#              #
-#    Updated: 2016/04/18 13:39:59 by sganon           ###   ########.fr        #
+#    Updated: 2016/04/18 15:58:34 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,12 +47,14 @@ $(NAME):
 		@echo "Libft and mlx compiled."
 		@$(CC) $(CC_FLAGS) -c $(SRC_LIST) $(INC_FLAG)
 		@echo "Objects compiled."
+		@rm -rf objs/
+		@mkdir objs/
 		@mv $(O_FILES) ./objs/
 		@$(CC) $(CC_FLAGS) -o $(NAME) $(O_LIST) $(LIBFT_FLAG) $(MLX_FLAG) -lm $(INC_FLAG)
 		@echo "Wolf3d compiled."
 
 clean:
-		@rm -f $(O_LIST)
+		@rm -rf objs/
 		@make -C libft/ fclean
 		@make -C mlx/ clean
 		@echo "Objects and libraries cleaned."
