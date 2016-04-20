@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 13:07:25 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/13 18:33:34 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/20 15:04:08 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		draw_wall(t_env *e, double dist, int ray)
 	if (beta < 36000 && beta >= 0)
 		dist = dist * e->cos[(int)beta];
 	dist = 1.0 / dist * e->screen_dist;
-	i = round(WIN_Y / 2.0 - dist / 2.0);
+	i = WIN_Y / 2.0 - dist / 2.0;
 	y = i < 0 ? -i : 0;
 	ceil_cast(e, ray, i, beta);
 	while (y + i < WIN_Y - i)

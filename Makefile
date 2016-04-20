@@ -6,7 +6,7 @@
 #    By: sganon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:32:31 by sganon            #+#    #+#              #
-#    Updated: 2016/04/18 15:58:34 by sganon           ###   ########.fr        #
+#    Updated: 2016/04/20 15:20:36 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC =	main.c \
 		wall_bitmap.c \
 		floor_n_ceil_cast.c \
 		minimap.c \
+		check.c \
 
 SRC_LIST =	$(addprefix srcs/, $(SRC))
 

@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 13:06:38 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/13 19:14:02 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/20 16:46:03 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ int		get_ceil_color(t_env *e, t_point pix, int y)
 	pix.y *= e->ceil.x;
 	pix.x = pix.x >= 0 ? pix.x : pix.x + e->ceil.x;
 	pix.y = pix.y >= 0 ? pix.y : pix.y + e->ceil.y;
-	p = (int)pix.x * 4 + ((int)pix.y + e->gif * e->ceil.x) * e->ceil.sl;
+	p = (int)pix.x * e->ceil.bpp / 8 + ((int)pix.y + e->gif * e->ceil.x) * e->ceil.sl;
+	if (p < 0 
+			|| p >= e->ceil.x * e->ceil.bpp / 8 + (e->ceil.x + e->gif * e->ceil.x) * e->ceil.sl)
+		return (0);
 	col.rgb.r = (t_bytes)e->ceil.img[p] * g;
 	col.rgb.g = (t_bytes)e->ceil.img[p + 1] * g;
 	col.rgb.b = (t_bytes)e->ceil.img[p + 2] * g;

@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/19 17:30:30 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/20 15:26:29 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include <math.h>
 # include <time.h>
 
-# define WIN_X					1920.0
-# define WIN_Y					1080.0
+# define ANSI_COLOR_RED     "\033[31m"
+
+# define WIN_X					1200.0
+# define WIN_Y					720.0
 # define WIN_X2					(WIN_X / 2.0)
 # define WIN_Y2					(WIN_Y / 2.0)
 
@@ -131,5 +133,8 @@ void							handle_fps_for_gif(t_env *e);
 void							get_offset_x(t_env *e, double dist_x,
 								double dist_y);
 int								get_wall_color(t_env *e, double h, int y);
+void							check_for_char(char **b);
+void							ft_error(char *s, int fd);
+void							check_start_pos(t_env *e);
 
 #endif
