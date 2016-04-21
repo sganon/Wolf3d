@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:46:28 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/20 15:26:29 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/21 13:37:17 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 # define ABS(x)					((x) < 0 ? -(x) : (x))
 # define SP(x)					((x) * (x))
 # define MLX_DAT(w, x, y, z)	mlx_get_data_addr(w, x, y, z)
+
+# define CL(x)					ceil.x
 
 typedef unsigned char			t_bytes;
 

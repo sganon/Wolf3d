@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 17:40:53 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/20 16:29:56 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/21 13:34:20 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	check_for_char(char **tab)
 		j = 0;
 		while (tab[i][j])
 		{
-			if (tab[i][j] != '0' && tab[i][j] != '1' && tab[i][j] != '\n' 
+			if (tab[i][j] != '0' && tab[i][j] != '1' && tab[i][j] != '\n'
 					&& tab[i][j] != ' ')
 				ft_error("Map error: not correctly formated", 2);
 			j++;

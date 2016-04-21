@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:50:38 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/19 18:18:55 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/21 13:31:40 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,19 @@ static int		get_map(char **tab, t_env *env)
 
 	check_for_char(env->tab);
 	get_max_x(env->tab, env);
-	map = (int **)malloc(sizeof(int *) * env->map_y);
+	if (!(map = (int **)malloc(sizeof(int *) * env->map_y)))
+		ft_error("Malloc error", 2);
 	i = -1;
 	while (tab[++i])
 	{
 		j = -1;
-		map[i] = (int *)malloc(sizeof(int) * env->map_x);
+		if (!(map[i] = (int *)malloc(sizeof(int) * env->map_x)))
+			ft_error("Malloc error", 2);
 		tmp = ft_strsplit(tab[i], ' ');
 		while (tmp[++j])
 			map[i][j] = ft_atoi(tmp[j]);
-		while (j < env->map_x)
-		{
+		while (j++ < env->map_x)
 			map[i][j] = 1;
-			j++;
-		}
 	}
 	env->map = map;
 	return (0);

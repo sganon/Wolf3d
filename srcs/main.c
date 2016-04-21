@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 16:44:43 by sganon            #+#    #+#             */
-/*   Updated: 2016/04/20 16:43:24 by sganon           ###   ########.fr       */
+/*   Updated: 2016/04/21 13:33:47 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	ft_print_map(t_env *e)
 
 int		create_image(t_env *e)
 {
-	e->img_ptr = mlx_new_image(e->mlx, WIN_X, WIN_Y);
+	if (!(e->img_ptr = mlx_new_image(e->mlx, WIN_X, WIN_Y)))
+		ft_error("Failed creating image", 2);
 	e->img = mlx_get_data_addr(e->img_ptr, &(e->bpp), &(e->sl), &(e->end));
 	return (1);
 }
@@ -68,11 +69,12 @@ int		main(int argc, char **argv)
 	t_env	*e;
 
 	e = (t_env *)malloc(sizeof(t_env));
+	if (!e)
+		ft_error("Malloc error", 2);
 	if (argc == 2)
 	{
 		if (!read_that_file(argv[1], e))
 			return (0);
-		ft_print_map(e);
 		if (!(init_env(e)))
 			return (0);
 		mlx_hook(e->win, 2, (1L << 0), key_events, e);
